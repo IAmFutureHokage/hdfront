@@ -1,0 +1,23 @@
+<input type="checkbox" id="nav-toggle" hidden appOpened>
+
+<nav class="nav" [class]="menu">
+   
+    <label for="nav-toggle" class="nav-toggle" onclick></label>
+    <app-login *ngIf="LoginIs()"></app-login>
+    <h4  *ngIf="!LoginIs()">{{userrole}}</h4>
+    <h2  *ngIf="!LoginIs()">{{username}}</h2>
+    <ul *ngIf="!LoginIs()&&(isAdmin)">
+        <li><a routerLink="users">Пользователи</a>
+        <li><a routerLink="users/new">Добавить пользователя</a>
+            <li><a routerLink="fields">Настройка полей</a>
+        <li><a (click)="Logout()" class="logout">Выйти</a> 
+    </ul>
+    <ul  *ngIf="!LoginIs()&&(isOther)">
+        <li><a routerLink="requests">Все заявки</a>
+        <li><a routerLink="requests/free">Свободные</a>
+        <li><a routerLink="requests/my">Мои</a>
+        <li><a routerLink="stats">Статистика</a>
+        <li><a routerLink="requests/new">Создать</a>
+        <li><a (click)="Logout()" class="logout">Выйти</a> 
+    </ul>
+</nav>

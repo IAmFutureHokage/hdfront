@@ -1,0 +1,16 @@
+<section>
+    <h1>Редактирование полей</h1>
+    <input [(ngModel)]="name" type="text" placeholder="Название"/>
+    <select  [(ngModel)]="cat">
+      <option value="" hidden>Добавить в..</option> 
+      <option value="infsys">Информационные системы</option> 
+      <option value="channels">Каналы связи</option> 
+    </select>
+<input (click)="Add()" type="submit" value="Добавить">
+
+<h2>Информационные системы</h2>
+<app-field *ngFor="let field of infsysAll" [field]="field"> </app-field>
+<h2>Каналы связи</h2>
+<app-field *ngFor="let field of channelsAll" [field]="field"> </app-field>
+
+</section>

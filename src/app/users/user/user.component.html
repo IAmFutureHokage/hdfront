@@ -1,0 +1,12 @@
+<article class="user-card">
+<header>{{user?.login}}</header>
+<section>
+<span>Права:</span>{{this.roleStr}}
+<br />
+<span>Почта:</span>{{user?.mail}}
+</section>
+<footer>
+    <a [routerLink]="['edit', user?.id]" class="edit">Редактировать</a>
+    <a (click)="Delete()" class="delete">Удалить</a>
+</footer>
+</article>

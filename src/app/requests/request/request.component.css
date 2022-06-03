@@ -1,0 +1,124 @@
+.request-card {
+    margin:10px;
+    box-sizing: border-box;
+    display: block;
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    border-radius: 3px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    width: calc(100% - 20px);
+    text-align: left;
+    background: #fff;
+    margin-bottom: 20px;
+    max-width: 1200px;
+}
+@media screen and (min-width: 1500px){
+    .request-card {margin-left: calc(50% - 600px);}
+}
+.request-card header {
+    padding: 15px;
+    box-sizing: inherit;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    display: block;
+    font-weight: bold;
+    border-radius: 3px 0px 0px 0px;
+}
+.opened section {
+    border-left: 10px solid rgb(28, 196, 42);
+}
+
+.distributed section {
+    border-left: 10px solid rgb(231, 168, 9);
+}
+.proccesing section {
+    border-left: 10px solid rgb(46, 117, 249);
+}
+.checking section {
+    border-left: 10px solid rgb(91, 107, 136);
+}
+.closed {
+    opacity: 0.5;
+}
+.closed:hover {
+    opacity: 1;
+}
+
+.request-card header span{
+float: right;
+font-weight: 300;
+}
+.request-card section {
+    padding: 15px;
+    font-size: 1rem;
+    line-height: 1.6em;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.request-card div {
+    padding: 0px 40px 0px 0px;
+    color: rgba(0, 0, 0, .8);
+    font-size: 0.9rem;
+    box-sizing: border-box;
+	display: inline-block;
+    vertical-align: middle;
+    width: 25%;
+}
+.request-card div.turned {
+    width: 50%;
+}
+
+.request-card section span {
+    display: inline-block;
+    padding: 0px 40px 0px 0px;
+    font-size: 1rem;
+    color: black;
+
+}
+
+.request-card footer {
+    box-sizing: inherit;
+    padding: 15px;
+    border-top:1px solid rgba(0, 0, 0, .1);
+}
+
+.request-card a {
+    color: rgb(41, 91, 230);
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+}
+.request-card footer a {
+    float: right;
+    display: block;
+    border-left: 1px solid rgba(0,0,0,0.1);
+    padding: 0 15px;
+}
+
+.request-card a:hover {
+    color: rgb(29, 65, 162);
+}
+
+footer .distribute {
+    float: right;
+}
+footer .distribute select {
+border: none; 
+font-size: 1rem;
+margin-right: 20px;
+width: 200px;
+}
+
+@media screen and (max-width:900px) {
+    .request-card header span {float: none; display: block; margin-top: 10px;}
+    .request-card div, div.turned {min-width: 100%; margin-bottom: 10px;}
+    .request-card span {width: 100%;}
+    footer .distribute {float: none; padding: 20px 0px}
+    footer .distribute select {margin-top: 20px;}
+}
+@media screen and (max-width:700px) {
+    .request-card a { position: relative; float: inherit !important; padding: 0px !important; border: none !important; margin-top: 10px;}
+}

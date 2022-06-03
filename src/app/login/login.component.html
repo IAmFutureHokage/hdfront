@@ -1,0 +1,9 @@
+<div>
+<h2>Авторизация</h2>
+<select name="executorId" [(ngModel)]="userName">
+    <option selected disabled hidden value="">Учетная запись</option>
+    <option *ngFor="let user of users" [value]="user.login">{{user.login}}</option> 
+  </select>
+<input [(ngModel)]="password" type="password" placeholder="Пароль"/>
+<input (click)="Login()" type="submit" value="Войти">
+</div>

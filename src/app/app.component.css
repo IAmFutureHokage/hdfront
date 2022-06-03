@@ -1,0 +1,13 @@
+@media screen and (min-width: 1200px) {
+    .maincont {
+        margin-left: 295px !important;
+        padding: 15px;
+        text-align: left;
+} } 
+
+@media screen and (max-width: 1199px) {
+.maincont {
+    text-align: center;
+    padding: 15px;
+}
+}

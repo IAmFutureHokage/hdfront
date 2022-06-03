@@ -1,0 +1,23 @@
+<article class="request-card" [class]="statusclass">
+    <header>
+       {{request?.theme}}
+        <span *ngIf="request?.status !== 1">Исполнитель: <b>{{executorLogin}}</b></span>
+    </header>
+    <section>
+    <div class="turned">Обратился: <br><span>{{request?.a_name}} ( <a href="mailto:{{request?.a_mail}}">{{request?.a_mail}}</a> )</span></div>
+    <div>Cистема: <br><span>{{request?.infsys}}</span></div>
+    <div>Канал: <br><span>{{request?.chennal}}</span> </div>
+        </section>
+    <footer>
+        <span><b>{{statustext}}</b> {{statustime}}</span>
+        <a [routerLink]="['/requests/get', request?.id]">Подробнее</a>
+        <span class="distribute" *ngIf="request?.status === 1">
+            <select [(ngModel)]="executorId" *ngIf="this.authService.getUserrole()=== 'moder'">
+                <option selected hidden disabled value="">Выбрать исполнителя</option>
+                <option *ngFor="let user of users" [value]="user.id">{{user.login}}</option>
+            </select>
+            <a (click)="Distribute()">{{distributebutton}}</a>
+        </span>
+        <a (click)="ChangeStatus()" *ngIf="request?.status !== 5 && request?.status !== 1 && this.authService.getUsername() === executorLogin">Сменить статус</a>
+    </footer>
+    </article>

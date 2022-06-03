@@ -1,0 +1,32 @@
+<nav>
+    <input [(ngModel)]="searchRequests" (input)="searchInput()" type="text" placeholder="Поиск по заявкам"/>
+    <a (click)="filtersView()"> Все фильтры</a>
+    </nav>
+    <div *ngIf="filtersOpen">
+      <div>
+        <span>Канал связи</span>
+      <select [(ngModel)]="selectChennal" (ngModelChange)="requestsFilter()">
+      <option selected value="all">Все</option>
+      <option *ngFor="let field of channelsAll" (value)="field.name">{{field.name}}</option> 
+    </select>
+    <span>Информационная система</span>
+    <select [(ngModel)]="selectInfsys" (ngModelChange)="requestsFilter()">
+      <option selected value="all">Все</option>
+      <option *ngFor="let field of infsysAll" (value)="field.name">{{field.name}}</option> 
+    </select>
+  </div>
+    <div>
+      <span>Статус</span>
+      <input [(ngModel)]="selectStatus.opened" type="checkbox" value="1" (ngModelChange)="requestsFilter()">Открыты<br>
+      <input [(ngModel)]="selectStatus.distributed" type="checkbox" value="2" (ngModelChange)="requestsFilter()">Распределены<br> 
+      <input [(ngModel)]="selectStatus.proccesing" type="checkbox" value="3" (ngModelChange)="requestsFilter()">В процессе<br> 
+      <input [(ngModel)]="selectStatus.checking" type="checkbox" value="4" (ngModelChange)="requestsFilter()">На проверке<br>
+      <input [(ngModel)]="selectStatus.closed" type="checkbox" value="5" (ngModelChange)="requestsFilter()">Закрыты
+    </div>
+    <div class="data">
+      <span>Дата </span>
+      с<input [(ngModel)]="selectDate.from" type="date" (ngModelChange)="searchInput()">
+      до <input [(ngModel)]="selectDate.before" type="date" (ngModelChange)="searchInput()">
+    </div>
+  </div>
+<app-request *ngFor="let request of requests" [request]="request"> </app-request>

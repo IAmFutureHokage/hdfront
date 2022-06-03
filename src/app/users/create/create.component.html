@@ -1,0 +1,13 @@
+<section>
+    <h1>Новый пользователь</h1>
+    <input [(ngModel)]="login" type="text" placeholder="Имя пользователя" required/>
+    <input [(ngModel)]="newPassword" type="text" minlength="6" placeholder="Пароль" required/>
+    <input [(ngModel)]="mail" type="email" placeholder="Почта" required/>
+      <select  [(ngModel)]="role" required>
+        <option value="" hidden>Роль</option> 
+        <option value="admin">Администратор</option> 
+        <option value="moder">Руководитель</option> 
+        <option value="executor">Исполнитель</option> 
+      </select>
+  <a (click)="Add()" >Создать</a>
+</section>

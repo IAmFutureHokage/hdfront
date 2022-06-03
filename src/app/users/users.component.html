@@ -1,0 +1,11 @@
+<nav>
+<input [(ngModel)]="searchUser" (input)="changeRole()" type="text" placeholder="Поиск"/>
+<select [(ngModel)]="selectRole" (ngModelChange)="changeRole()">
+    <option selected value="all">Все</option>
+    <option value="admin">Администраторы</option> 
+    <option value="moder">Руководители</option> 
+    <option value="executor">Исполнители</option> 
+  </select>
+  <a routerLink="/users/new">Создать</a>
+</nav>
+<app-user *ngFor="let user of users" [user]="user"> </app-user>

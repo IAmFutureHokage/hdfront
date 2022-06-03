@@ -1,0 +1,90 @@
+nav a {
+        margin-right: 10px;
+        text-decoration: none;
+        padding: 9px 12px;
+        color: #fff;
+        border-radius: 3px;
+        transition: 0.3s;
+        background: rgb(77,144,252);
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 300;
+        -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+        -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+        float: right;
+        height: 36px;
+        display: block;
+        box-sizing: border-box;
+}
+
+nav a:hover {
+    background:rgb(60,112,196);
+    color: rgb(237, 236, 236);
+    -webkit-box-shadow: 0 5px 7px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 5px 7px rgba(0, 0, 0, .2);
+    box-shadow: 0 5px 7px rgba(0, 0, 0, .2);
+}
+
+nav {
+    margin-bottom: 30px;
+    text-align: left;
+    box-sizing: border-box;
+    border-bottom: 1px solid #dbdbdb;
+    padding-bottom: 20px;
+}
+@media screen and (max-width: 1199px){
+    nav{
+  padding-left: 50px;  
+    }
+    nav a {
+        margin-left: 20px;
+    }
+}
+@media screen and (max-width:620px) {
+    nav input[type="text"] {
+        display: block;
+        width: 100% !important;
+        box-sizing: border-box;
+        margin-bottom: 20px !important;
+    }
+    nav select {
+        margin-left: 0px !important;
+    }
+    nav a {
+        float: right !important;
+        margin-right: 0px !important;
+    }
+}
+nav input[type="text"], nav select {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em; 
+    line-height: inherit; 
+    margin: 0;
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    border-radius: 3px;
+    padding: 9px 12px;
+    transition: 0.3s;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    height: 36px;
+    box-sizing: border-box;
+  }
+
+  nav input[type="text"]::placeholder {
+    color: #212529;
+    opacity: 0.4;
+  }
+
+  nav input[type="text"]:focus, nav input[type="text"]:hover, nav select:focus, nav select:hover {
+    background-color: rgb(234, 234, 234);
+    outline: 0;
+  }
+
+  nav select {
+      margin-left: 20px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+  }

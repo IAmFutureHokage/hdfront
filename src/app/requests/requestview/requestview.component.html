@@ -1,0 +1,25 @@
+<section>
+    <h1>{{request?.theme}}  <span [class]="'status color' + request?.status">{{this.statusview}}</span></h1>
+    <div class="from">
+        <span>Имя отправителя: {{request?.a_name}}</span>
+        <span>Почта отправителя: <a href="mailto:{{request?.a_mail}}">{{request?.a_mail}}</a></span>
+        <span *ngIf="request?.status !== 1">Имя исполнителя: {{request?.executor?.login}}</span>
+        <span>Канал связи: {{request?.chennal}}</span>
+        <span>Информационная система: {{request?.infsys}}</span>
+    </div>
+    <div  class="description">
+    <p>{{request?.description}}</p>
+    </div>
+    <div class="lifecycle">
+        <span class="opened">Открыта в {{this.date.opened}} </span>
+        <span class="distributed" *ngIf="request?.status === 2 || request?.status === 3 || request?.status === 4 || request?.status === 5">Определена в {{this.date.distributed}}</span>
+        <span class="proccesing" *ngIf="request?.status === 3 || request?.status === 4 || request?.status === 5">В работе с {{this.date.proccesing}}</span>
+        <span class="checking" *ngIf="request?.status === 4 || request?.status === 5">На проверке с {{this.date.checking}}</span>
+        <span class="closed" *ngIf="request?.status === 5">Закрыта в {{this.date.closed}}</span>
+    </div>
+    <nav>
+        <a onclick="history.go(-1)" class="back">Назад</a>
+        <a [routerLink]="['/requests/edit', request?.id]" class="edit" *ngIf="this.authService.getUserrole()=== 'moder'">Редактировать</a>
+        <a (click)="Delete()" class="delete" *ngIf="this.authService.getUserrole()=== 'moder'">Удалить</a>
+    </nav>
+</section>

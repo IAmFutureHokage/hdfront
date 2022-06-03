@@ -1,0 +1,211 @@
+.nav {
+    width: 280px;
+    min-width: 280px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    left: -280px;
+    padding: 15px 20px;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    transition: 0.3s;
+    background-color: #131313d7;
+    z-index: 2000;
+    box-sizing: border-box;
+}
+
+ 
+@media screen and (min-width: 1200px) {
+  .nav-toggle {display: none;}  
+}
+.nav-toggle {
+    position: absolute;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    box-sizing: border-box;
+    margin-left: 275px;
+    background: inherit;
+    color: #dadada;
+    cursor: pointer;
+    z-index: 2001;
+    text-align: center;
+    font-size: 18px;
+    -webkit-transition: color .25s ease-in-out;
+    -moz-transition: color .25s ease-in-out;
+    transition: color .25s ease-in-out;
+    padding-top: 9px;
+}
+.nav-toggle:after {
+    content: '\2630';
+    text-decoration: none;
+}
+ 
+.nav-toggle:hover {
+    color: #f4f4f4;
+}
+ 
+[id='nav-toggle'] {
+    position: absolute;
+    display: none;
+}
+[id='nav-toggle']:checked ~ .nav > .nav-toggle {
+    left: auto;
+    right: 2px;
+    top: 1em;
+    background: none;
+}
+[id='nav-toggle']:checked ~ .nav {
+    left: 0;
+    box-shadow:4px 0px 20px 0px rgba(0,0,0, 0.5);
+    -moz-box-shadow:4px 0px 20px 0px rgba(0,0,0, 0.5);
+    -webkit-box-shadow:4px 0px 20px 0px rgba(0,0,0, 0.5);
+    overflow-y: auto;
+}
+[id='nav-toggle']:checked ~ .nav.noLogin {
+    width: 100%;
+}
+[id='nav-toggle']:checked ~ .nav > .nav-toggle:after {
+    content: '\2715';
+}
+ 
+ 
+@media screen and (min-width: 320px) {
+    html,
+    body {
+      margin: 0;
+      overflow-x: hidden;
+    }
+}
+ 
+@media screen and (max-width: 320px) {
+    html,
+    body {
+      margin: 0;
+      overflow-x: hidden;
+    }
+    .nav {
+      width: 100%;
+      box-shadow: none
+    }
+}
+
+.nav > ul {
+    display: block;
+    margin: 0;
+    padding: 20px 0 0 10px;
+    list-style: none;
+
+}
+ 
+.nav > ul > li {
+    line-height: 2.7;
+    opacity: 0;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    -webkit-transition: opacity .5s .1s, -webkit-transform .5s .1s;
+    -moz-transition: opacity .5s .1s, -moz-transform .5s .1s;
+    -ms-transition: opacity .5s .1s, -ms-transform .5s .1s;
+    transition: opacity .5s .1s, transform .5s .1s;
+}
+ 
+[id='nav-toggle']:checked ~ .nav > ul > li {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+}
+ 
+ 
+.nav > ul > li > a {
+    display: inline-block;
+    position: relative;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 1em;
+    color: #eeeeee;
+    width: 100%;
+    text-decoration: none;
+    -webkit-transition: color .5s ease, padding .5s ease;
+    -moz-transition: color .5s ease, padding .5s ease;
+    transition: color .5s ease, padding .5s ease;
+    cursor: pointer;
+}
+ 
+.nav > ul > li > a:hover,
+.nav > ul > li > a:focus {
+    color: white;
+    padding-left: 15px;
+}
+ 
+ 
+.nav > ul > li > a:before {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    width: calc(100% - 10px);
+    -webkit-transition: width 0s ease;
+    transition: width 0s ease;
+}
+ 
+.nav > ul > li > a:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: calc(100% - 10px);
+    background: rgba(255, 255, 255, 0.2);
+    -webkit-transition: width .5s ease;
+    transition: width .5s ease;
+}
+ 
+.nav > ul > li > a:hover:before {
+    width: 0%;
+    background: rgba(255, 255, 255, 0.2);
+    -webkit-transition: width .5s ease;
+    transition: width .5s ease;
+}
+ 
+.nav > ul > li > a:hover:after {
+    width: 0%;
+    background: transparent;
+    -webkit-transition: width 0s ease;
+    transition: width 0s ease;
+}
+
+.nav h2, .nav h4, .nav .logout {
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
+}
+.nav h2 {
+    font-size: 1.2em;
+    margin-top: -15px;
+    opacity: 0.9;
+}
+.nav h4 {
+    font-size: 1em;
+    font-weight: lighter;
+    opacity: 0.8;
+}
+.nav .logout {
+text-decoration: none;
+font-weight: lighter;
+opacity: 0.8;
+display: block;
+margin-top: 25px;
+margin-left: -10px;
+}
+.nav .logout:before,.nav .logout::after  {
+   height: 0px !important;
+    }

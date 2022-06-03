@@ -1,0 +1,69 @@
+.user-card {
+    margin:10px;
+    box-sizing: border-box;
+    display: inline-block;
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    border-radius: 3px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    width: 18rem;
+    text-align: left;
+    background: #fff;
+}
+.user-card header {
+    font-size: 1.2rem;
+    padding: 15px;
+    box-sizing: inherit;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    display: block;
+    font-weight: bold;
+}
+.user-card section {
+    box-sizing: inherit;
+    padding: 15px;
+    font-size: 1rem;
+    opacity: 0.9;
+    line-height: 1.6em;
+}
+.user-card section span {
+    opacity: 0.8;
+    margin-right: 5px;
+}
+.user-card footer {
+    box-sizing: inherit;
+    padding: 0px 10px 10px 10px;
+}
+.user-card footer a{
+    margin-right: 10px;
+    text-decoration: none;
+    display: inline-block;
+    padding: 9px 12px;
+    color: #fff;
+    border-radius: 3px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.user-card footer a.delete {
+    color: rgb(207, 57, 55);
+}
+.user-card footer a.delete:hover {
+    color: #b13230;
+    background: rgb(245, 245, 245);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, .3)
+}
+.user-card footer a.edit {
+    background: rgb(242, 135, 28);
+}
+.user-card footer a.edit:hover {
+    background: #cf7419;
+    color: rgb(244, 243, 243);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+}

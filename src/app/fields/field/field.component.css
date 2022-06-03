@@ -1,0 +1,15 @@
+div {
+    padding: 10px 0px;
+    margin: 0px 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+a {
+    float: right;
+    color: rgb(207, 57, 55);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: rgb(155, 43, 41);
+}

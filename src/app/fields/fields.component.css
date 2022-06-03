@@ -1,0 +1,72 @@
+section {
+    text-align: left;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    box-sizing: border-box;
+    padding: 0px 10px 10px 10px;
+}
+section h1 {
+    font-size: 1.2rem;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+section h2 {
+    font-size: 1rem;
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    margin-bottom: 0px;
+}
+@media screen and (max-width:1199px){
+    section h1{
+        margin-left: 50px;
+    }   
+}
+
+section input, section select {
+    font-size: 1em; 
+    display: inline-block;
+    line-height: inherit; 
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    border-radius: 3px;
+    padding: 9px 12px;
+    transition: 0.3s;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    min-height: 36px;
+    box-sizing: border-box;
+    margin: 10px;
+  }
+section input[type="text"] {
+    width: calc(60% - 85px);
+}
+section select {
+    width: calc(40% - 85px);
+}
+
+  section input::placeholder {
+    color: #212529;
+    opacity: 0.4;
+  }
+
+  section input:focus, section input:hover, section select:focus, section select:hover {
+    background-color: rgb(234, 234, 234);
+    outline: 0;
+  }
+
+  section input[type="submit"] {
+    text-align: center;
+    background:  rgb(77, 144, 252);
+    color: #fff;
+    width: 110px;
+}
+section input[type="submit"]:hover{
+    background:  rgb(60, 112, 196);
+    color: rgb(237, 236, 236);
+    -webkit-box-shadow: 0 5px 7px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 5px 7px rgba(0, 0, 0, .2);
+    box-shadow: 0 5px 7px rgba(0, 0, 0, .2);
+}

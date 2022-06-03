@@ -1,0 +1,14 @@
+<section>
+    <h1>Изменить пользователя</h1>
+    <input [(ngModel)]="login" type="text" placeholder="Имя пользователя"/>
+    <input  [(ngModel)]="newPassword" type="text" minlength="6" placeholder="Пароль"/>
+    <input  [(ngModel)]="mail" type="email" placeholder="Почта"/>
+      <select  [(ngModel)]="role">
+        <option value="" hidden>Роль</option> 
+        <option value="admin">Администратор</option> 
+        <option value="moder">Руководитель</option> 
+        <option value="executor">Исполнитель</option> 
+      </select>
+      <a routerLink="/users">Назад</a>
+ <input type="submit" (click)="Update()" value="Изменить"/>
+</section>
