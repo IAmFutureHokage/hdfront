@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'auth-service-front'`, () => {
+  it(`should have as title 'hdfront-front'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('auth-service-front');
+    expect(app.title).toEqual('hdfront-front');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('auth-service-front app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('hdfront-front app is running!');
   });
 });

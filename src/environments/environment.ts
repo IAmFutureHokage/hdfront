@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseApiUrl: 'http://localhost:81/api/v:v',
+  baseApiUrl: 'http://localhost:81/api/v1',
+  // baseApiUrl: 'http://help-desk-primlab-api.primorsky.ru/api/v1',
   apiVersion: 1,
 };
 

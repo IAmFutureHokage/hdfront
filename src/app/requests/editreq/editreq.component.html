@@ -1,10 +1,10 @@
 <section>
   <h1>Изменить заявку</h1>
 <form>
-  <input name="a_name" [(ngModel)]="a_name" type="text" placeholder="ФИО заявителя" required/>
-  <input name="a_mail" [(ngModel)]="a_mail" type="email" placeholder="Почта заявителя" required/>
-  <input name="theme" [(ngModel)]="theme" type="text" placeholder="Тема обращения" required/>
-  <textarea name="description" [(ngModel)]="description" placeholder="Описание" required></textarea>
+  <input name="a_name" [(ngModel)]="a_name" type="text" placeholder="ФИО заявителя"/>
+  <input name="a_mail" [(ngModel)]="a_mail" type="email" placeholder="Почта заявителя"/>
+  <input name="theme" [(ngModel)]="theme" type="text" placeholder="Тема обращения"/>
+  <textarea name="description" [(ngModel)]="description" placeholder="Описание"></textarea>
   <select name="chennal" [(ngModel)]="chennal">
       <option selected disabled hidden>{{this.chennal}}</option>
       <option *ngFor="let field of channelsAll" [value]="field.name">{{field.name}}</option> 

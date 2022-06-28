@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "auth-service-front": {
+    "hdfront-front": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/auth-service-front",
+            "outputPath": "dist/hdfront-front",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -37,7 +37,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -68,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "auth-service-front:build:production"
+              "browserTarget": "hdfront-front:build:production"
             },
             "development": {
-              "browserTarget": "auth-service-front:build:development"
+              "browserTarget": "hdfront-front:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "auth-service-front:build"
+            "browserTarget": "hdfront-front:build"
           }
         },
         "test": {
@@ -96,11 +96,13 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": ["node_modules/apexcharts/dist/apexcharts.min.js"]
+            "scripts": [
+              "node_modules/apexcharts/dist/apexcharts.min.js"
+            ]
           }
         }
       }
     }
   },
-  "defaultProject": "auth-service-front"
+  "defaultProject": "hdfront-front"
 }
