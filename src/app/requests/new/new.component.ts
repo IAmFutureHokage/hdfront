@@ -36,19 +36,19 @@ export class NewComponent implements OnInit {
   }
 
   Add() {
-    if((this.a_name !== "")
-    &&(this.a_name !== undefined)
-    &&(this.theme !== "")
-    &&(this.theme !== undefined)
-    &&(this.description !== "")
-    &&(this.description !== undefined)
-    &&(this.chennal !== "")
-    &&(this.infsys !== "")
-    &&(this.a_mail !== undefined)
-    &&this.valid.test(this.a_mail)){
+//     if((this.a_name !== "")
+//     &&(this.a_name !== undefined)
+//     &&(this.theme !== "")
+//     &&(this.theme !== undefined)
+//     &&(this.description !== "")
+//     &&(this.description !== undefined)
+//     &&(this.chennal !== "")
+//     &&(this.infsys !== "")
+//     &&(this.a_mail !== undefined)
+//     &&this.valid.test(this.a_mail)){
     this.requestsService.addRequest(this.a_name, this.a_mail, this.theme, this.description, this.chennal, this.infsys)
     .then((response) => {this.router.navigate(['requests']);})
     .execute();
-    }
+//     }
   }
 }
