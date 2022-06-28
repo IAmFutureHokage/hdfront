@@ -61,19 +61,14 @@ export class EditreqComponent implements OnInit {
   }
 
   Update() {
-    if(this.executorId === undefined) this.executorId = null;
-    if((this.a_name !== "")
-    &&(this.a_name !== undefined)
-    &&(this.theme !== "")
-    &&(this.theme !== undefined)
-    &&(this.description !== "")
-    &&(this.description !== undefined)
-    &&(this.chennal !== "")
-    &&(this.chennal !== undefined)
-    &&(this.infsys !== "")
-    &&(this.infsys !== undefined)
-    &&(this.a_mail !== undefined)
-    &&this.valid.test(this.a_mail)){
+   if(this.a_name === undefined){this.a_name = ""}
+    if(this.theme === undefined){this.theme = ""}
+    if(this.description === undefined){this.description = ""}
+    if(this.a_mail === undefined){this.a_mail = ""}
+    if(this.chennal === undefined){this.chennal = ""}
+    if(this.infsys === undefined){this.infsys = ""}
+    if(this.executorId === undefined){this.executorId = ""}
+    if((this.valid.test(this.a_mail)||(this.a_mail === "")){
     if (confirm('Изменить заявку?')) {
     this.requestsService.editRequest(this.id, this.a_name, this.a_mail, this.theme, this.description, this.chennal, this.infsys, this.executorId)
     .then((response) => {this.router.navigate(['requests']);})
