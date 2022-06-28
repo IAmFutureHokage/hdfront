@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  baseApiUrl: 'http://help-desk-primlab-api.primorsky.ru/api/v1',
+  apiVersion: 1,
 };

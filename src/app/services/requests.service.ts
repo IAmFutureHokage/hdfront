@@ -10,7 +10,7 @@ export class RequestsService {
 
   router: any;
 
-  constructor(private _httpService: HttpService) {}
+  constructor(private _httpService: HttpService) { }
 
   private _baseApiUrl = getRouteWithParam(env.baseApiUrl, 'v', env.apiVersion);
 
@@ -21,7 +21,7 @@ export class RequestsService {
     executorLogin: string | null,
     statuses: number[] | null,
     dateFrom: Date | null,
-    dateTo:  Date | null,
+    dateTo: Date | null,
     page: number | null,
     pageSize: number | null
   ): HttpResponseHandler<FetchAllRequestsResponse> {
@@ -47,8 +47,8 @@ export class RequestsService {
         `${this._baseApiUrl}/item/get-all`,
         payload
       )
-      .then((response) => {})
-      .catch((error) => {});
+      .then((response) => { })
+      .catch((error) => { });
   }
 
 
@@ -63,8 +63,8 @@ export class RequestsService {
         `${this._baseApiUrl}/item/details`,
         payload
       )
-      .then((response) => {})
-      .catch((error) =>{}
+      .then((response) => { })
+      .catch((error) => { }
       );
   }
 
@@ -79,8 +79,8 @@ export class RequestsService {
         `${this._baseApiUrl}/item/delete`,
         payload
       )
-      .then((response) => {})
-      .catch((error) => {});
+      .then((response) => { })
+      .catch((error) => { });
   }
 
   editRequest(
@@ -110,8 +110,8 @@ export class RequestsService {
         `${this._baseApiUrl}/item/edit`,
         payload
       )
-      .then((response) => {})
-      .catch((error) => {});
+      .then((response) => { })
+      .catch((error) => { });
   }
 
   addRequest(
@@ -137,11 +137,11 @@ export class RequestsService {
         `${this._baseApiUrl}/item/create`,
         payload
       )
-      .then((response) => {})
-      .catch((error) => {});
+      .then((response) => { })
+      .catch((error) => { });
   }
 
-  changeStatusRequest(id : string): HttpResponseHandler<UpdateRequestResponse> {
+  changeStatusRequest(id: string): HttpResponseHandler<UpdateRequestResponse> {
     const payload: UpdateRequestRequest = {
       data: { id },
     };
@@ -150,21 +150,21 @@ export class RequestsService {
         `${this._baseApiUrl}/item/change-status`,
         payload
       )
-      .then((response) => {})
-      .catch((error) => {});
+      .then((response) => { })
+      .catch((error) => { });
   }
 
-  distributeRequest(id : string, executorId: string | null): HttpResponseHandler<UpdateRequestResponse> {
+  distributeRequest(id: string, executorId: string | null): HttpResponseHandler<UpdateRequestResponse> {
     const payload: DistributeRequestRequest = {
-      data: { id, executorId } 
+      data: { id, executorId }
     };
     return this._httpService
       .post<UpdateRequestRequest, UpdateRequestResponse>(
         `${this._baseApiUrl}/item/distribute`,
         payload
       )
-      .then((response) => {})
-      .catch((error) => {});
+      .then((response) => { })
+      .catch((error) => { });
   }
 }
 
