@@ -1,15 +1,15 @@
 <section>
     <h1>Создать заявку</h1>
 <form>
-  <input name="a_name" [(ngModel)]="a_name" type="text" placeholder="ФИО заявителя" required/>
-  <input name="a_mail" [(ngModel)]="a_mail" type="email" placeholder="Почта заявителя" required/>
+  <input name="a_name" [(ngModel)]="a_name" type="text" placeholder="ФИО заявителя"/>
+  <input name="a_mail" [(ngModel)]="a_mail" type="email" placeholder="Почта заявителя"/>
   <input name="theme" [(ngModel)]="theme" type="text" placeholder="Тема обращения" required/>
-  <textarea name="description" [(ngModel)]="description" placeholder="Описание" required></textarea>
-  <select name="chennal" [(ngModel)]="chennal" required>
+  <textarea name="description" [(ngModel)]="description" placeholder="Описание"></textarea>
+  <select name="chennal" [(ngModel)]="chennal">
     <option selected hidden disabled value="">Канал связи</option>
       <option *ngFor="let field of channelsAll" [value]="field.name">{{field.name}}</option> 
     </select>
-    <select name="infsys" [(ngModel)]="infsys" required >
+    <select name="infsys" [(ngModel)]="infsys" >
       <option selected hidden disabled value="">Информационная система</option>
       <option *ngFor="let field of infsysAll" [value]="field.name">{{field.name}}</option> 
     </select>
