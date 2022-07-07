@@ -68,13 +68,11 @@ export class EditreqComponent implements OnInit {
     if(this.chennal === undefined){this.chennal = ""}
     if(this.infsys === undefined){this.infsys = ""}
     if(this.executorId === undefined){this.executorId = ""}
-    if((this.valid.test(this.a_mail)||(this.a_mail === "")){
     if (confirm('Изменить заявку?')) {
     this.requestsService.editRequest(this.id, this.a_name, this.a_mail, this.theme, this.description, this.chennal, this.infsys, this.executorId)
     .then((response) => {this.router.navigate(['requests']);})
     .execute();
     }
-  }
   }
 
 }
