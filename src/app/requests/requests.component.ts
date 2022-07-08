@@ -45,7 +45,7 @@ export class RequestsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.selectDate.before.setHours(this.selectDate.before.getHours() + 10);
+    this.selectDate.before.setHours(this.selectDate.before.getHours() + 15);
       if(window.location.pathname === "/requests/free") {
         this.selectStatus = {
           opened: true,
