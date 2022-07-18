@@ -18,7 +18,7 @@
     </div>
     <nav>
         <a onclick="history.go(-1)" class="back">Назад</a>
-        <a [routerLink]="['/requests/edit', request?.id]" class="edit" *ngIf="this.authService.getUserrole()=== 'moder'">Редактировать</a>
-        <a (click)="Delete()" class="delete" *ngIf="this.authService.getUserrole()=== 'moder'">Удалить</a>
+        <a [routerLink]="['/requests/edit', request?.id]" class="edit">Редактировать</a>
+        <a (click)="Delete()" class="delete">Удалить</a>
     </nav>
 </section>
