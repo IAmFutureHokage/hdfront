@@ -14,7 +14,6 @@
         <span class="opened">Открыта в {{this.date.opened}} </span>
         <span class="distributed" *ngIf="request?.status === 2 || request?.status === 3 || request?.status === 4 || request?.status === 5">Определена в {{this.date.distributed}}</span>
         <span class="proccesing" *ngIf="request?.status === 3 || request?.status === 4 || request?.status === 5">В работе с {{this.date.proccesing}}</span>
-        <span class="checking" *ngIf="request?.status === 4 || request?.status === 5">На проверке с {{this.date.checking}}</span>
         <span class="closed" *ngIf="request?.status === 5">Закрыта в {{this.date.closed}}</span>
     </div>
     <nav>
