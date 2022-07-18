@@ -42,7 +42,7 @@ export class RequestComponent implements OnInit {
     }
     if(this.request.status === 3){ 
       this.statusclass = "proccesing"; 
-      this.statustext = "В процессе с" ; 
+      this.statustext = "В работе с" ; 
       this.statustime = new Date(new Date(this.request.lifecycle.proccesing)).toLocaleTimeString().slice(0, -3) + " " + new Date(new Date(this.request.lifecycle.proccesing)).toLocaleDateString()
       this.executorLogin = this.request.executor.login
     }
@@ -77,7 +77,7 @@ export class RequestComponent implements OnInit {
   this.request.status++;
   if(this.request.status === 3){ 
     this.statusclass = "proccesing"; 
-    this.statustext = "В процессе с" ; 
+    this.statustext = "В работе с" ; 
   }
   if(this.request.status === 4){ 
     this.statusclass = "checking"; 
