@@ -253,8 +253,8 @@ export class StatsComponent implements OnInit {
     this.mathTable();
 
     this.chartOptions1 = {
-      series: [this.amountStatus.opened, this.amountStatus.distributed, this.amountStatus.processing, this.amountStatus.checking, this.amountStatus.closed],
-      labels: ["Открыты", "Распределены", "В работе", "На проверке", "Закрыты"],
+      series: [this.amountStatus.opened, this.amountStatus.distributed, this.amountStatus.processing, this.amountStatus.closed],
+      labels: ["Открыты", "Распределены", "В работе", "Закрыты"],
       chart: {
         type: "donut",
           
@@ -277,7 +277,7 @@ export class StatsComponent implements OnInit {
           }
         }
       },
-      colors:['#179e22', '#daa112', '#2e75f9', '#5b6b88', '#a3a3a3'],
+      colors:['#179e22', '#daa112', '#2e75f9', '#a3a3a3'],
       states: {
         normal: {
             filter: {
@@ -379,8 +379,8 @@ export class StatsComponent implements OnInit {
     }, 500);
   }
   requestsLoad() {
-    this.requestsService.fetchRequests(null, null, null, null, null, this.selectDate.from, this.selectDate.before, 1, 20).then(response => {
-    this.requestsdata = response?.data ??[];  this.requestsFilter()}).execute();
+    this.requestsService.fetchRequests(null, null, null, null, null, this.selectDate.from, this.selectDate.before, 1, 999999999).then(response => {
+    this.requestsdata = response?.data ??[]; console.log(this.requestsdata.length);  this.requestsFilter()}).execute();
   }
 
   requestsFilter() {
@@ -493,5 +493,4 @@ export class StatsComponent implements OnInit {
   }
 
 }
-
 
