@@ -12,8 +12,6 @@
     <label [style.background-color]="'#daa112'" for="stc2">Распределены: {{amountStatus.distributed}}</label><br> 
     <input [(ngModel)]="selectStatus.proccesing" type="checkbox" (ngModelChange)="requestsFilter()" id="stc3">
     <label [style.background-color]="'#2e75f9'" for="stc3">В процессе: {{amountStatus.processing}}</label><br> 
-    <input [(ngModel)]="selectStatus.checking" type="checkbox" (ngModelChange)="requestsFilter()" id="stc4">
-    <label [style.background-color]="'#5b6b88'" for="stc4">На проверке: {{amountStatus.checking}}</label><br>
     <input [(ngModel)]="selectStatus.closed" type="checkbox" (ngModelChange)="requestsFilter()" id="stc5">
     <label [style.background-color]="'#a3a3a3'" for="stc5">Закрыты: {{amountStatus.closed}}</label><br>
   </div>
@@ -158,5 +156,6 @@
 </div>
 
 </section>
+
 
 
