@@ -36,7 +36,7 @@ export class NewComponent implements OnInit {
 
  Add() {
     if(this.a_name === undefined){this.a_name = ""}
-    if(this.theme === undefined){this.theme = ""}
+    if(this.theme === undefined){this.theme = "Без имени"}
     if(this.description === undefined){this.description = ""}
     if(this.a_mail === undefined){this.a_mail = ""}
     this.requestsService.addRequest(this.a_name, this.a_mail, this.theme, this.description, this.chennal, this.infsys)
