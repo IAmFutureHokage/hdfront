@@ -205,6 +205,13 @@ h1 {
     padding: 9px 12px;
     transition: 0.3s;
 }
+.download a.word {
+    background-color: #1f6fd7;
+}
+.download a:hover.word {
+    background-color: #1a5fba;
+}
+
 .download a:hover {
     background-color: #2e8b5d;
     color: rgb(232, 230, 230);
