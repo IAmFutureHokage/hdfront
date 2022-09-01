@@ -1,3 +1,4 @@
+
 <section>
 <nav><h1>Статистика с <input [(ngModel)]="selectDate.from" type="date" (ngModelChange)="dateFilter()">
 до <input [(ngModel)]="selectDate.before" type="date" (ngModelChange)="dateFilter()"></h1></nav>
@@ -103,7 +104,7 @@
 </div>
 
 <div class="download">
-  <b>Выбрать столбцы: </b>
+  <!-- <b>Выбрать столбцы: </b>
   <input [(ngModel)]="generateTable.total" type="checkbox" id="tto">
   <label style="background-color: #969696" for="tto">Колличество</label>
   <input [(ngModel)]="generateTable.status" type="checkbox" id="ts">
@@ -113,49 +114,73 @@
   <input [(ngModel)]="generateTable.executors" type="checkbox" id="te">
   <label style="background-color: #969696" for="te">Исполнители</label>
   <input [(ngModel)]="generateTable.time" type="checkbox" id="tt">
-  <label style="background-color: #969696" for="tt">Время</label>
+  <label style="background-color: #969696" for="tt">Время</label> -->
   <a (click)="exportexcel()">Сохранить в Excel</a>
+  <a (click)="openData()" class="word">Открыть отчет</a>
+  <div *ngIf="opened" style="background: #fff; padding: 20px;  box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
+  -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, .2); margin-top: 25px; line-height: 0.8rem; text-align: left; font-size: 0.8rem;">
+<h3 style="text-align:center">Отчет с {{selectDate.from  | date: 'dd.MM.yyyy'}} по {{selectDate.before  | date: 'dd.MM.yyyy'}}</h3>
+<br>
+<u>Всего заявок: {{requests.length}}</u>
+<p *ngFor="let item of channelsAll; let i = index">Через {{item.name}}: {{mathChannels[i]}}</p>
+<br>
+<p *ngFor="let item of infsysAll; let i = index">Обращения, касающиеся <u>{{item.name}}</u> : {{mathInfsys[i]}}</p>
+<br>
+<p>Среднее время решения {{this.leadtime.processing}} мин.</p>
+<p>Среднее время обработки {{this.leadtime.treatment}} мин.</p>
+<div *ngFor="let item of infsysAll; let i = index">
+  <br>
+  <h3 style="text-align:center">{{item.name}}</h3>
+  <u>Всего поступило заявок: {{mathInfsys[i]}}</u>
+<ul>
+  <li style="line-height: 1.5rem;" *ngFor="let channel of channelsAll; let j = index">Через {{channel.name}}: {{infsyscalc(channel.name, item.name)}}</li>
+</ul>
+
+</div>
+  </div>
+   
+
+
+
   <table id="excel-table">
     <tbody>
       <tr>
-        <td rowspan="2">Информационная система</td>
-        <td rowspan="2" *ngIf="generateTable.total">Всего</td>
-        <td colspan="5" *ngIf="generateTable.status">Статус</td>
-        <td [attr.colspan]="channelsAll.length" *ngIf="generateTable.channels">Каналы связи</td>
-        <td [attr.colspan]="usersAll.length" *ngIf="generateTable.executors">Исполнители</td>
-        <td *ngIf="generateTable.time" colspan="2">Среднее время (минуты)</td>
+        <td colspan="7"><b>Журнал входящих заявок в тех. поддержку КГКУ "Примлаб"</b></td>
       </tr>
       <tr>
-        <td *ngIf="generateTable.status">Открыты</td>
-        <td *ngIf="generateTable.status">Распределены</td>
-        <td *ngIf="generateTable.status">В процессе</td>
-        <td *ngIf="generateTable.status">Проверяются</td>
-        <td *ngIf="generateTable.status">Закрыты</td>
-        <ng-container *ngIf="generateTable.channels"><td *ngFor="let item of channelsAll">{{item.name}}</td></ng-container>
-        <ng-container *ngIf="generateTable.executors"><td *ngFor="let item of usersAll">{{item.login}}</td></ng-container>
-        <td *ngIf="generateTable.time">Время решения</td>
-        <td *ngIf="generateTable.time">Время обработки</td>
+        <td colspan="7">C {{selectDate.from  | date: 'dd.MM.yyyy'}} по {{selectDate.before  | date: 'dd.MM.yyyy'}}</td>
       </tr>
-      <tr *ngFor="let item of infsysAll; let i = index" >
-        <td>{{item.name}}</td>
-        <td *ngIf="generateTable.total">{{statusesTable[i].amount}}</td>
-        <td *ngIf="generateTable.status">{{statusesTable[i].opened}}</td>
-        <td *ngIf="generateTable.status">{{statusesTable[i].distributed}}</td>
-        <td *ngIf="generateTable.status">{{statusesTable[i].processing}}</td>
-        <td *ngIf="generateTable.status">{{statusesTable[i].checking}}</td>
-        <td *ngIf="generateTable.status">{{statusesTable[i].closed}}</td>
-        <ng-container *ngIf="generateTable.channels"><td *ngFor="let channel of channelsAll; let j = index">{{channelsTable[j + channelsAll.length * i]}}</td></ng-container>
-        <ng-container *ngIf="generateTable.executors"><td *ngFor="let executor of usersAll; let j = index">{{usersTable[j + usersAll.length * i]}}</td></ng-container>
-        <td *ngIf="generateTable.time">{{leadtimeAll[i].processing}}</td>
-        <td *ngIf="generateTable.time">{{leadtimeAll[i].treatment}}</td>
+      <tr>
+        <td colspan="7"> </td>
       </tr>
+      <tr>
+        <td>№</td>
+        <td>Подразделение</td>
+        <td>Тема обращения</td>
+        <td>ИС</td>
+        <td>Канал связи</td>
+        <td>Время решения</td>
+        <td>Дата обращения</td>
+      </tr>
+      <tr *ngFor="let request of requests; let i = index">
+     <td>{{i + 1}}</td>
+     <td>{{request.a_name}}</td>
+     <td>{{request.theme}}</td>
+     <td>{{request.infsys}}</td>
+     <td>{{request.chennal}}</td>
+     <td *ngIf="request.lifecycle.closed !== null">{{mathExelTime(request.lifecycle.opened, request.lifecycle.closed)}} мин.</td>
+     <td *ngIf="request.lifecycle.closed == null">Не закрыта</td>
+     <td>{{request.lifecycle.opened | date: 'dd.MM.yyyy'}}</td>
+      </tr>
+    
+
+
     </tbody>
   </table>
-
   
 </div>
 
 </section>
-
 
 
