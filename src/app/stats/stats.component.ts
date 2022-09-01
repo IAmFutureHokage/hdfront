@@ -108,6 +108,8 @@ export class StatsComponent implements OnInit {
 
   public selectUsers: boolean[] = []
   public selectUsersValue: string[] = []
+
+  public opened = false;
   
 
   public selectDate= {
@@ -250,7 +252,6 @@ export class StatsComponent implements OnInit {
       this.leadtime.treatment = Math.round(this.leadtime.treatment / this.amountStatus.closed);
       this.leadtime.processing = Math.round(this.leadtime.processing / this.amountStatus.closed);
     }
-    this.mathTable();
 
     this.chartOptions1 = {
       series: [this.amountStatus.opened, this.amountStatus.distributed, this.amountStatus.processing, this.amountStatus.closed],
@@ -423,63 +424,24 @@ export class StatsComponent implements OnInit {
     }
   }
 
-  mathTable(){
-    this.usersTable = []
-    this.channelsTable = []
-    this.statusesTable = []
-    this.leadtimeAll = []
-    this.infsysAll.forEach((infsys, i) => {
-      this.amountStatusTable = {
-        amount: 0,
-        opened: 0,
-        distributed: 0,
-        processing: 0,
-        checking: 0,
-        closed: 0
-      }
-      this.leadtimeMath = {
-        treatment: 0,
-        processing: 0
-      }
-      this.requestsdata.filter(item => item.infsys === infsys.name &&
-        (new Date(item.lifecycle.opened) > new Date(this.selectDate.from)) &&
-        (new Date(item.lifecycle.opened) < new Date(this.selectDate.before))).forEach(request => {
-        this.amountStatusTable.amount++;
-        if(request.status === 1) this.amountStatusTable.opened++
-        if(request.status === 2) this.amountStatusTable.distributed++
-        if(request.status === 3) this.amountStatusTable.processing++
-        if(request.status === 4) this.amountStatusTable.checking++
-        if(request.status === 5){
-          this.amountStatusTable.closed++
-          this.mathTime.opened = moment(request.lifecycle.opened);
-          this.mathTime.processing = moment(request.lifecycle.proccesing);
-          this.mathTime.closed = moment(request.lifecycle.closed);
-          this.leadtimeMath.treatment = this.leadtimeMath.treatment +  this.mathTime.closed.diff(this.mathTime.opened, 'minutes');
-          this.leadtimeMath.processing= this.leadtimeMath.processing +  this.mathTime.closed.diff(this.mathTime.processing, 'minutes');
-        }
-      })
-      this.channelsAll.forEach(response => {
-        this.channelsTable.push( 
-          this.requestsdata.filter(item => item.infsys === infsys.name &&
-          (new Date(item.lifecycle.opened) > new Date(this.selectDate.from)) &&
-          (new Date(item.lifecycle.opened) < new Date(this.selectDate.before) &&
-        (item.chennal === response.name))).length 
-        )
-        });
-        this.usersAll.forEach(response => {
-        this.usersTable.push( 
-          this.requestsdata.filter(item => item.infsys === infsys.name &&
-          (new Date(item.lifecycle.opened) > new Date(this.selectDate.from)) &&
-          (new Date(item.lifecycle.opened) < new Date(this.selectDate.before) &&
-        (item.executor?.login === response.login))).length 
-        )
-        });
-      let push = { 
-        treatment: (Math.round(this.leadtimeMath.treatment / this.amountStatusTable.closed)), 
-        processing: (Math.round(this.leadtimeMath.processing / this.amountStatusTable.closed))}
-      this.leadtimeAll.push(push);
-      this.statusesTable.push(this.amountStatusTable)
-    } )
+
+  mathExelTime (a: string, b: string): number
+  {
+   let closed = moment(b);
+   let opened = moment(a);
+   return closed.diff(opened, 'minutes');
+   
+  }
+
+  openData(): void
+  {
+    this.opened = !this.opened;
+  }
+
+  infsyscalc(a: string | null, b: string | null): number | void {
+    if(a !== null && b !== null){
+      return this.requests.filter(request => a === request.chennal && b === request.infsys).length;
+    }
   }
 
   exportexcel(): void
@@ -493,4 +455,6 @@ export class StatsComponent implements OnInit {
   }
 
 }
+
+
 
