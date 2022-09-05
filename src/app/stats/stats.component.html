@@ -1,7 +1,10 @@
 
 <section>
-<nav><h1>Статистика с <input [(ngModel)]="selectDate.from" type="date" (ngModelChange)="dateFilter()">
-до <input [(ngModel)]="selectDate.before" type="date" (ngModelChange)="dateFilter()"></h1></nav>
+<nav><h1>Статистика c {{selectDate.from  | date: 'dd.MM.yyyy'}} по {{selectDate.before  | date: 'dd.MM.yyyy'}} 
+<div style="float: right; font-weight: 200;margin-top: -3px;">
+Выбрать: <input [(ngModel)]="selectDate.from" type="date" (ngModelChange)="dateFilter()">
+— <input [(ngModel)]="selectDate.before" type="date" (ngModelChange)="dateFilter()"></div>
+</h1></nav>
 
 
 <div class="statsmain">
@@ -104,17 +107,6 @@
 </div>
 
 <div class="download">
-  <!-- <b>Выбрать столбцы: </b>
-  <input [(ngModel)]="generateTable.total" type="checkbox" id="tto">
-  <label style="background-color: #969696" for="tto">Колличество</label>
-  <input [(ngModel)]="generateTable.status" type="checkbox" id="ts">
-  <label style="background-color: #969696" for="ts">Статусы</label>
-  <input [(ngModel)]="generateTable.channels" type="checkbox" id="tc">
-  <label style="background-color: #969696" for="tc">Каналы связи</label>
-  <input [(ngModel)]="generateTable.executors" type="checkbox" id="te">
-  <label style="background-color: #969696" for="te">Исполнители</label>
-  <input [(ngModel)]="generateTable.time" type="checkbox" id="tt">
-  <label style="background-color: #969696" for="tt">Время</label> -->
   <a (click)="exportexcel()">Сохранить в Excel</a>
   <a (click)="openData()" class="word">Открыть отчет</a>
   <div *ngIf="opened" style="background: #fff; padding: 20px;  box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
