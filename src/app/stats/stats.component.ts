@@ -8,6 +8,7 @@ import { RequestWithIds } from '../types/requests';
 import { UserWithNewPassword } from '../types/users';
 import * as XLSX from 'xlsx';
 
+
 import {
   ApexNonAxisChartSeries,
   ApexResponsive,
@@ -182,7 +183,11 @@ export class StatsComponent implements OnInit {
     
 
     this.selectDate.before.setHours(this.selectDate.from.getHours() + 24);
-    this.selectDate.from.setMonth(this.selectDate.from.getMonth() - 1);
+    this.selectDate.from.setDate(1);
+    if(this.selectDate.before.getMonth() > 0 && this.selectDate.before.getMonth() < 4) {this.selectDate.from.setMonth(0)}
+    if(this.selectDate.before.getMonth() > 3 && this.selectDate.before.getMonth() < 7) {this.selectDate.from.setMonth(3)}
+    if(this.selectDate.before.getMonth() > 6 && this.selectDate.before.getMonth() < 10) {this.selectDate.from.setMonth(6)}
+    if(this.selectDate.before.getMonth() > 9 && this.selectDate.before.getMonth() < 13) {this.selectDate.from.setMonth(9)}
       this.fieldsService.fetchAll().then(response => {
         this.infsysAll = response?.data?.filter(field => field.cat === "infsys") ??[];
         this.channelsAll = response?.data?.filter(field => field.cat === "channels") ??[];
@@ -455,6 +460,7 @@ export class StatsComponent implements OnInit {
   }
 
 }
+
 
 
 
