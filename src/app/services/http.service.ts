@@ -12,6 +12,11 @@ type SuccessCallback<R> = (response?: R) => void;
 type ErrorCallback<E> = (error?: E) => void;
 type FinallyCallback = () => void;
 
+type HTTPOptions<
+  T extends (...args: any[]) => any,
+  I extends number
+> = Parameters<T>[I];
+
 export class HttpResponseHandler<Response, Err = Error> {
   private _callbackStack: Record<
     CallbackType,
@@ -70,19 +75,20 @@ export class HttpService {
 
   post<Request = any, Response = any, Err = Error>(
     url: string,
-    payload?: Request
+    payload?: Request,
+    options?: HTTPOptions<typeof this._http.post, 2>
   ) {
     return new HttpResponseHandler<Response, Err>(
-      this._http.post<Response>(url, payload)
+      this._http.post<Response>(url, payload, options)
     );
   }
 
-  get<Request = any, Response = any, Err = Error>(
+  get<Response = any, Err = Error>(
     url: string,
-    payload?: Request
+    options?: HTTPOptions<typeof this._http.get, 1>
   ) {
     return new HttpResponseHandler<Response, Err>(
-      this._http.get<Response>(url, payload)
+      this._http.get<Response>(url, options)
     );
   }
 }

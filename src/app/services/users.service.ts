@@ -24,9 +24,7 @@ export class UsersService {
 
   fetchAllUsers(): HttpResponseHandler<FetchAllUsersResponse> {
     return this._httpService
-      .get<FetchAllUsersRequest, FetchAllUsersResponse>(
-        `${this._baseApiUrl}/user/get-all`
-      )
+      .get<FetchAllUsersResponse>(`${this._baseApiUrl}/user/get-all`)
       .then((response) => {})
       .catch((error) => {});
   }
@@ -37,8 +35,7 @@ export class UsersService {
         getRouteWithParam(`${this._baseApiUrl}/user/get/:id`, 'id', id)
       )
       .then((response) => {})
-      .catch((error) =>{}
-      );
+      .catch((error) => {});
   }
 
   deleteUser(id: string): HttpResponseHandler<FetchDeleteUserResponse> {

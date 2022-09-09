@@ -1,178 +1,268 @@
-
 <section>
-<nav><h1>Статистика c {{selectDate.from  | date: 'dd.MM.yyyy'}} по {{selectDate.before  | date: 'dd.MM.yyyy'}} 
-<div style="float: right; font-weight: 200;margin-top: -3px;">
-Выбрать: <input [(ngModel)]="selectDate.from" type="date" (ngModelChange)="dateFilter()">
-— <input [(ngModel)]="selectDate.before" type="date" (ngModelChange)="dateFilter()"></div>
-</h1></nav>
+  <nav>
+    <h1>
+      Статистика c {{ selectDate.from | date: "dd.MM.yyyy" }} по
+      {{ selectDate.before | date: "dd.MM.yyyy" }}
+      <div style="float: right; font-weight: 200; margin-top: -3px">
+        Выбрать:
+        <input
+          [(ngModel)]="selectDate.from"
+          type="date"
+          (ngModelChange)="dateFilter()"
+        />
+        —
+        <input
+          [(ngModel)]="selectDate.before"
+          type="date"
+          (ngModelChange)="dateFilter()"
+        />
+      </div>
+    </h1>
+  </nav>
 
-
-<div class="statsmain">
-  <div class="filters">
-    <h1>Статус</h1>
-    <input [(ngModel)]="selectStatus.opened" type="checkbox" (ngModelChange)="requestsFilter()" id="stc1">
-    <label [style.background-color]="'#179e22'" for="stc1">Открыты: {{amountStatus.opened}}</label><br>
-    <input [(ngModel)]="selectStatus.distributed" type="checkbox" (ngModelChange)="requestsFilter()" id="stc2">
-    <label [style.background-color]="'#daa112'" for="stc2">Распределены: {{amountStatus.distributed}}</label><br> 
-    <input [(ngModel)]="selectStatus.proccesing" type="checkbox" (ngModelChange)="requestsFilter()" id="stc3">
-    <label [style.background-color]="'#2e75f9'" for="stc3">В процессе: {{amountStatus.processing}}</label><br> 
-    <input [(ngModel)]="selectStatus.closed" type="checkbox" (ngModelChange)="requestsFilter()" id="stc5">
-    <label [style.background-color]="'#a3a3a3'" for="stc5">Закрыты: {{amountStatus.closed}}</label><br>
-  </div>
-  <div>
-    <apx-chart
-      [series]="chartOptions1.series!"
-      [labels]="chartOptions1.labels!"
-      [chart]="chartOptions1.chart!"
-      [legend]="chartOptions1.legend!"
-      [states]="chartOptions1.states!"
-      [colors]="chartOptions1.colors!"
-      [plotOptions]="chartOptions1.plotOptions!"
-    ></apx-chart>
-  </div>
-  <div>
-    <apx-chart
-    [series]="chartOptions2.series!"
-    [chart]="chartOptions2.chart!"
-    [dataLabels]="chartOptions2.dataLabels!"
-    [plotOptions]="chartOptions2.plotOptions!"
-    [yaxis]="chartOptions2.yaxis!"
-    [xaxis]="chartOptions2.xaxis!"
-    [fill]="chartOptions2.fill!"
-    [title]="chartOptions2.title!"
-    [tooltip]="chartOptions2.tooltip!"
-    [states]="chartOptions1.states!"
-  ></apx-chart>
-</div>
+  <div class="statsmain">
+    <div class="filters">
+      <h1>Статус</h1>
+      <input
+        [(ngModel)]="selectStatus.opened"
+        type="checkbox"
+        (ngModelChange)="requestsFilter()"
+        id="stc1"
+      />
+      <label [style.background-color]="'#179e22'" for="stc1"
+        >Открыты: {{ amountStatus.opened }}</label
+      ><br />
+      <input
+        [(ngModel)]="selectStatus.distributed"
+        type="checkbox"
+        (ngModelChange)="requestsFilter()"
+        id="stc2"
+      />
+      <label [style.background-color]="'#daa112'" for="stc2"
+        >Распределены: {{ amountStatus.distributed }}</label
+      ><br />
+      <input
+        [(ngModel)]="selectStatus.proccesing"
+        type="checkbox"
+        (ngModelChange)="requestsFilter()"
+        id="stc3"
+      />
+      <label [style.background-color]="'#2e75f9'" for="stc3"
+        >В процессе: {{ amountStatus.processing }}</label
+      ><br />
+      <input
+        [(ngModel)]="selectStatus.closed"
+        type="checkbox"
+        (ngModelChange)="requestsFilter()"
+        id="stc5"
+      />
+      <label [style.background-color]="'#a3a3a3'" for="stc5"
+        >Закрыты: {{ amountStatus.closed }}</label
+      ><br />
+    </div>
+    <div>
+      <apx-chart
+        [series]="chartOptions1.series!"
+        [labels]="chartOptions1.labels!"
+        [chart]="chartOptions1.chart!"
+        [legend]="chartOptions1.legend!"
+        [states]="chartOptions1.states!"
+        [colors]="chartOptions1.colors!"
+        [plotOptions]="chartOptions1.plotOptions!"
+      ></apx-chart>
+    </div>
+    <div>
+      <apx-chart
+        [series]="chartOptions2.series!"
+        [chart]="chartOptions2.chart!"
+        [dataLabels]="chartOptions2.dataLabels!"
+        [plotOptions]="chartOptions2.plotOptions!"
+        [yaxis]="chartOptions2.yaxis!"
+        [xaxis]="chartOptions2.xaxis!"
+        [fill]="chartOptions2.fill!"
+        [title]="chartOptions2.title!"
+        [tooltip]="chartOptions2.tooltip!"
+        [states]="chartOptions1.states!"
+      ></apx-chart>
+    </div>
   </div>
   <div class="stats">
     <div>
-    <h1>Информационные системы</h1>
+      <h1>Информационные системы</h1>
       <span *ngFor="let infsys of infsysAll; let i = index">
-          <input [(ngModel)]="selectInfsys[i]" type="checkbox" (ngModelChange)="requestsFilter()" [id]="'sc' + i">
-          <label [style.background-color]="colors[i]" [for]="'sc' + i ">{{infsys.name}}: {{mathInfsys[i]}}</label><br>
+        <input
+          [(ngModel)]="selectInfsys[i]"
+          type="checkbox"
+          (ngModelChange)="requestsFilter()"
+          [id]="'sc' + i"
+        />
+        <label [style.background-color]="colors[i]" [for]="'sc' + i"
+          >{{ infsys.name }}: {{ mathInfsys[i] }}</label
+        ><br />
       </span>
     </div>
     <div>
       <apx-chart
-      [series]="chartOptions3.series!"
-      [chart]="chartOptions3.chart!"
-      [labels]="chartOptions3.labels!"
-      [legend]="chartOptions1.legend!"
-      [plotOptions]="chartOptions3.plotOptions!"
-      [states]="chartOptions1.states!"
-      [colors]="colors"
+        [series]="chartOptions3.series!"
+        [chart]="chartOptions3.chart!"
+        [labels]="chartOptions3.labels!"
+        [legend]="chartOptions1.legend!"
+        [plotOptions]="chartOptions3.plotOptions!"
+        [states]="chartOptions1.states!"
+        [colors]="colors"
       ></apx-chart>
     </div>
-    </div>
-    <div  class="stats">
-      <div>
+  </div>
+  <div class="stats">
+    <div>
       <h1>Каналы связи</h1>
-        <span *ngFor="let channel of channelsAll; let i = index">
-        <input [(ngModel)]="selectChannel[i]" type="checkbox" (ngModelChange)="requestsFilter()" [id]="'cc' + i">
-        <label [style.background-color]="colors[i  + infsysAll.length]" [for]="'cc' + i">{{channel.name}}: {{mathChannels[i]}}</label><br>
+      <span *ngFor="let channel of channelsAll; let i = index">
+        <input
+          [(ngModel)]="selectChannel[i]"
+          type="checkbox"
+          (ngModelChange)="requestsFilter()"
+          [id]="'cc' + i"
+        />
+        <label
+          [style.background-color]="colors[i + infsysAll.length]"
+          [for]="'cc' + i"
+          >{{ channel.name }}: {{ mathChannels[i] }}</label
+        ><br />
       </span>
-  </div>
-  <div>
-    <apx-chart
-    [series]="chartOptions4.series!"
-    [chart]="chartOptions3.chart!"
-    [labels]="chartOptions4.labels!"
-    [legend]="chartOptions1.legend!"
-    [plotOptions]="chartOptions3.plotOptions!"
-    [states]="chartOptions1.states!"
-    [colors]="chartOptions4.colors!"
-    ></apx-chart>
-  </div>
     </div>
+    <div>
+      <apx-chart
+        [series]="chartOptions4.series!"
+        [chart]="chartOptions3.chart!"
+        [labels]="chartOptions4.labels!"
+        [legend]="chartOptions1.legend!"
+        [plotOptions]="chartOptions3.plotOptions!"
+        [states]="chartOptions1.states!"
+        [colors]="chartOptions4.colors!"
+      ></apx-chart>
+    </div>
+  </div>
   <div class="stats">
     <div>
       <h1>Исполнители</h1>
       <span *ngFor="let user of usersAll; let i = index">
-        <input [(ngModel)]="selectUsers[i]" type="checkbox" (ngModelChange)="requestsFilter()" [id]="'uc' + i">
-        <label [style.background-color]="colors[i  + channelsAll.length + infsysAll.length ]" [for]="'uc' + i">{{user.login}}: {{mathUsers[i]}}</label><br>
-    </span>
+        <input
+          [(ngModel)]="selectUsers[i]"
+          type="checkbox"
+          (ngModelChange)="requestsFilter()"
+          [id]="'uc' + i"
+        />
+        <label
+          [style.background-color]="
+            colors[i + channelsAll.length + infsysAll.length]
+          "
+          [for]="'uc' + i"
+          >{{ user.login }}: {{ mathUsers[i] }}</label
+        ><br />
+      </span>
+    </div>
+    <div>
+      <apx-chart
+        [series]="chartOptions5.series!"
+        [chart]="chartOptions3.chart!"
+        [labels]="chartOptions5.labels!"
+        [legend]="chartOptions1.legend!"
+        [plotOptions]="chartOptions3.plotOptions!"
+        [states]="chartOptions1.states!"
+        [colors]="chartOptions5.colors!"
+      ></apx-chart>
+    </div>
   </div>
-  <div>
-    <apx-chart
-    [series]="chartOptions5.series!"
-    [chart]="chartOptions3.chart!"
-    [labels]="chartOptions5.labels!"
-    [legend]="chartOptions1.legend!"
-    [plotOptions]="chartOptions3.plotOptions!"
-    [states]="chartOptions1.states!"
-    [colors]="chartOptions5.colors!"
-    ></apx-chart>
+
+  <div class="download">
+    <a (click)="exportexcel()">Сохранить в Excel</a>
+    <a (click)="downloadReport()" class="word">Скачать отчет</a>
+    <div
+      *ngIf="opened"
+      style="
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+        -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+        margin-top: 25px;
+        line-height: 0.8rem;
+        text-align: left;
+        font-size: 0.8rem;
+      "
+    >
+      <h3 style="text-align: center">
+        Отчет с {{ selectDate.from | date: "dd.MM.yyyy" }} по
+        {{ selectDate.before | date: "dd.MM.yyyy" }}
+      </h3>
+      <br />
+      <u>Всего заявок: {{ requests.length }}</u>
+      <p *ngFor="let item of channelsAll; let i = index">
+        Через {{ item.name }}: {{ mathChannels[i] }}
+      </p>
+      <br />
+      <p *ngFor="let item of infsysAll; let i = index">
+        Обращения, касающиеся <u>{{ item.name }}</u> : {{ mathInfsys[i] }}
+      </p>
+      <br />
+      <p>Среднее время решения {{ this.leadtime.processing }} мин.</p>
+      <p>Среднее время обработки {{ this.leadtime.treatment }} мин.</p>
+      <div *ngFor="let item of infsysAll; let i = index">
+        <br />
+        <h3 style="text-align: center">{{ item.name }}</h3>
+        <u>Всего поступило заявок: {{ mathInfsys[i] }}</u>
+        <ul>
+          <li
+            style="line-height: 1.5rem"
+            *ngFor="let channel of channelsAll; let j = index"
+          >
+            Через {{ channel.name }}: {{ infsyscalc(channel.name, item.name) }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <table id="excel-table">
+      <tbody>
+        <tr>
+          <td colspan="7">
+            <b>Журнал входящих заявок в тех. поддержку КГКУ "Примлаб"</b>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="7">
+            C {{ selectDate.from | date: "dd.MM.yyyy" }} по
+            {{ selectDate.before | date: "dd.MM.yyyy" }}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="7"></td>
+        </tr>
+        <tr>
+          <td>№</td>
+          <td>Подразделение</td>
+          <td>Тема обращения</td>
+          <td>ИС</td>
+          <td>Канал связи</td>
+          <td>Время решения</td>
+          <td>Дата обращения</td>
+        </tr>
+        <tr *ngFor="let request of requests; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ request.a_name }}</td>
+          <td>{{ request.theme }}</td>
+          <td>{{ request.infsys }}</td>
+          <td>{{ request.chennal }}</td>
+          <td *ngIf="request.lifecycle.closed !== null">
+            {{
+              mathExelTime(request.lifecycle.opened, request.lifecycle.closed)
+            }}
+            мин.
+          </td>
+          <td *ngIf="request.lifecycle.closed == null">Не закрыта</td>
+          <td>{{ request.lifecycle.opened | date: "dd.MM.yyyy" }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-</div>
-
-<div class="download">
-  <a (click)="exportexcel()">Сохранить в Excel</a>
-  <a (click)="openData()" class="word">Открыть отчет</a>
-  <div *ngIf="opened" style="background: #fff; padding: 20px;  box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
-  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
-  -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, .2); margin-top: 25px; line-height: 0.8rem; text-align: left; font-size: 0.8rem;">
-<h3 style="text-align:center">Отчет с {{selectDate.from  | date: 'dd.MM.yyyy'}} по {{selectDate.before  | date: 'dd.MM.yyyy'}}</h3>
-<br>
-<u>Всего заявок: {{requests.length}}</u>
-<p *ngFor="let item of channelsAll; let i = index">Через {{item.name}}: {{mathChannels[i]}}</p>
-<br>
-<p *ngFor="let item of infsysAll; let i = index">Обращения, касающиеся <u>{{item.name}}</u> : {{mathInfsys[i]}}</p>
-<br>
-<p>Среднее время решения {{this.leadtime.processing}} мин.</p>
-<p>Среднее время обработки {{this.leadtime.treatment}} мин.</p>
-<div *ngFor="let item of infsysAll; let i = index">
-  <br>
-  <h3 style="text-align:center">{{item.name}}</h3>
-  <u>Всего поступило заявок: {{mathInfsys[i]}}</u>
-<ul>
-  <li style="line-height: 1.5rem;" *ngFor="let channel of channelsAll; let j = index">Через {{channel.name}}: {{infsyscalc(channel.name, item.name)}}</li>
-</ul>
-
-</div>
-  </div>
-   
-
-
-
-  <table id="excel-table">
-    <tbody>
-      <tr>
-        <td colspan="7"><b>Журнал входящих заявок в тех. поддержку КГКУ "Примлаб"</b></td>
-      </tr>
-      <tr>
-        <td colspan="7">C {{selectDate.from  | date: 'dd.MM.yyyy'}} по {{selectDate.before  | date: 'dd.MM.yyyy'}}</td>
-      </tr>
-      <tr>
-        <td colspan="7"> </td>
-      </tr>
-      <tr>
-        <td>№</td>
-        <td>Подразделение</td>
-        <td>Тема обращения</td>
-        <td>ИС</td>
-        <td>Канал связи</td>
-        <td>Время решения</td>
-        <td>Дата обращения</td>
-      </tr>
-      <tr *ngFor="let request of requests; let i = index">
-     <td>{{i + 1}}</td>
-     <td>{{request.a_name}}</td>
-     <td>{{request.theme}}</td>
-     <td>{{request.infsys}}</td>
-     <td>{{request.chennal}}</td>
-     <td *ngIf="request.lifecycle.closed !== null">{{mathExelTime(request.lifecycle.opened, request.lifecycle.closed)}} мин.</td>
-     <td *ngIf="request.lifecycle.closed == null">Не закрыта</td>
-     <td>{{request.lifecycle.opened | date: 'dd.MM.yyyy'}}</td>
-      </tr>
-    
-
-
-    </tbody>
-  </table>
-  
-</div>
-
 </section>
-
-
