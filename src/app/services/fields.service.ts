@@ -1,6 +1,14 @@
 import { Injectable } from '@angular/core';
 
-import { DeleteFieldRequest, FetchAllFieldsRequest, FetchAllFieldsResponse, FetchDeleteFieldResponse, FetchFieldResponse, Field, FieldAddRequest } from '../types/fields';
+import {
+  DeleteFieldRequest,
+  FetchAllFieldsRequest,
+  FetchAllFieldsResponse,
+  FetchDeleteFieldResponse,
+  FetchFieldResponse,
+  Field,
+  FieldAddRequest,
+} from '../types/fields';
 
 import { getRouteWithParam } from '../utils/route';
 import { environment as env } from 'src/environments/environment';
@@ -14,18 +22,12 @@ export class FieldsService {
   public fields: Field[] = [];
   private _baseApiUrl = getRouteWithParam(env.baseApiUrl, 'v', env.apiVersion);
 
-
-
   fetchAll(): HttpResponseHandler<FetchAllFieldsResponse> {
     return this._httpService
-      .get<FetchAllFieldsRequest, FetchAllFieldsResponse>(
-        `${this._baseApiUrl}/field/get-all`
-      )
+      .get<FetchAllFieldsResponse>(`${this._baseApiUrl}/field/get-all`)
       .then((response) => {})
       .catch((error) => {});
   }
-
-
 
   deleteField(id: string): HttpResponseHandler<FetchDeleteFieldResponse> {
     return this._httpService
@@ -39,13 +41,13 @@ export class FieldsService {
   addField(
     id: string,
     cat: string,
-    name: string,
+    name: string
   ): HttpResponseHandler<FetchFieldResponse> {
     const payload: FieldAddRequest = {
       data: {
         id,
         cat,
-        name
+        name,
       },
     };
     return this._httpService
