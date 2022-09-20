@@ -505,10 +505,15 @@ export class StatsComponent implements OnInit {
     }
   }
 
-  mathExelTime(a: string, b: string): number {
-    let closed = moment(b);
-    let opened = moment(a);
-    return closed.diff(opened, 'minutes');
+mathExelTime (a: string, b: string): number
+  {
+   let closed = moment(b);
+   let opened = moment(a);
+   if(Math.ceil(closed.diff(opened, 'minutes')) == 0) {
+    return 1;
+   }else{
+   return Math.ceil(closed.diff(opened, 'minutes'));
+   }
   }
 
   downloadReport(): void {
