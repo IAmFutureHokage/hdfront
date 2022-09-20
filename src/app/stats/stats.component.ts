@@ -109,6 +109,8 @@ export class StatsComponent implements OnInit {
 
   public opened = false;
 
+  public isReportDownloading = false;
+
   public selectDate = {
     from: new Date(),
     before: new Date(),
@@ -505,19 +507,23 @@ export class StatsComponent implements OnInit {
     }
   }
 
-mathExelTime (a: string, b: string): number
-  {
-   let closed = moment(b);
-   let opened = moment(a);
-   if(Math.ceil(closed.diff(opened, 'minutes')) == 0) {
-    return 1;
-   }else{
-   return Math.ceil(closed.diff(opened, 'minutes'));
-   }
+  mathExelTime(a: string, b: string): number {
+    let closed = moment(b);
+    let opened = moment(a);
+    if (Math.ceil(closed.diff(opened, 'minutes')) == 0) {
+      return 1;
+    } else {
+      return Math.ceil(closed.diff(opened, 'minutes'));
+    }
   }
 
   downloadReport(): void {
-    this.requestsService.downloadReport().execute();
+    this.isReportDownloading = true;
+    this.requestsService
+      .downloadReport()
+      .then(() => (this.isReportDownloading = false))
+      .catch(() => (this.isReportDownloading = false))
+      .execute();
   }
 
   infsyscalc(a: string | null, b: string | null): number | void {
