@@ -174,54 +174,6 @@
     </div>
   </div>
 
-  <div class="download">
-    <a (click)="exportexcel()">Сохранить в Excel</a>
-    <a (click)="downloadReport()" class="word">Скачать отчет</a>
-    <div
-      *ngIf="opened"
-      style="
-        background: #fff;
-        padding: 20px;
-        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-        -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-        -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-        margin-top: 25px;
-        line-height: 0.8rem;
-        text-align: left;
-        font-size: 0.8rem;
-      "
-    >
-      <h3 style="text-align: center">
-        Отчет с {{ selectDate.from | date: "dd.MM.yyyy" }} по
-        {{ selectDate.before | date: "dd.MM.yyyy" }}
-      </h3>
-      <br />
-      <u>Всего заявок: {{ requests.length }}</u>
-      <p *ngFor="let item of channelsAll; let i = index">
-        Через {{ item.name }}: {{ mathChannels[i] }}
-      </p>
-      <br />
-      <p *ngFor="let item of infsysAll; let i = index">
-        Обращения, касающиеся <u>{{ item.name }}</u> : {{ mathInfsys[i] }}
-      </p>
-      <br />
-      <p>Среднее время решения {{ this.leadtime.processing }} мин.</p>
-      <p>Среднее время обработки {{ this.leadtime.treatment }} мин.</p>
-      <div *ngFor="let item of infsysAll; let i = index">
-        <br />
-        <h3 style="text-align: center">{{ item.name }}</h3>
-        <u>Всего поступило заявок: {{ mathInfsys[i] }}</u>
-        <ul>
-          <li
-            style="line-height: 1.5rem"
-            *ngFor="let channel of channelsAll; let j = index"
-          >
-            Через {{ channel.name }}: {{ infsyscalc(channel.name, item.name) }}
-          </li>
-        </ul>
-      </div>
-    </div>
-
     <table id="excel-table">
       <tbody>
         <tr>
